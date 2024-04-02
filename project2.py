@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import simpledialog
-from PIL import Image, ImageTk
-
+from PIL import Image, ImageTk\
 
 # Function to change the button's image and open a form
 def on_button_press():
@@ -35,13 +34,19 @@ def on_form_close(form_window):
 root = tk.Tk()
 root.title("Image Toggle Button")
 
+# Load the background image
+background_image = Image.open("background.jpg")
+background_photo = ImageTk.PhotoImage(background_image)
+background_label = tk.Label(root, image=background_photo)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 # Load and resize images for the button
 image1 = Image.open("blackplane.png")
-image1 = image1.resize((100, 100), Image.Resampling.LANCZOS)
+image1 = image1.resize((10, 10), Image.Resampling.LANCZOS)
 image1 = ImageTk.PhotoImage(image1)
 
 image2 = Image.open("yellowplane.png")
-image2 = image2.resize((100, 100), Image.Resampling.LANCZOS)
+image2 = image2.resize((10, 10), Image.Resampling.LANCZOS)
 image2 = ImageTk.PhotoImage(image2)
 
 toggle_image = False  # Track which image is currently shown
