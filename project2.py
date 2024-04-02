@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import simpledialog
-from PIL import Image, ImageTk\
+from PIL import Image, ImageTk
 
 # Function to change the button's image and open a form
 def on_button_press():
