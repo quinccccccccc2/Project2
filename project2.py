@@ -4,7 +4,7 @@ from functools import partial
 
 # Initialize Tkinter window
 root = tk.Tk()
-root.title("Image Toggle Button")
+root.title("Billy Bishop Universal Airport Management System")
 
 # Load the background image and set as the window background
 background_image_path = "backgroundbilly.png"
