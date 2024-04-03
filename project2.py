@@ -44,6 +44,8 @@ button = tk.Button(root, image=image1_photo, command=on_button_press)
 button.place(x=30, y=120)
 button = tk.Button(root, image=image1_photo, command=on_button_press)
 button.place(x=30, y=260)
+button = tk.Button(root, image=image1_photo, command=on_button_press())
+button.place(x=100, y=430)
 
 # Start the Tkinter event loop
 root.mainloop()
