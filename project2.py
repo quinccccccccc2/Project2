@@ -27,11 +27,11 @@ image2_photo = ImageTk.PhotoImage(image2)
 root.geometry(f"{background_width}x{background_height}")
 
 # Function to change the button's image
-def on_button_press(button, image1_photo, image2_photo):
+def on_button_press(button, image1_photo, image2_photo, index):
     current_image = button.cget('image')
     new_image = image2_photo if current_image == str(image1_photo) else image1_photo
     button.config(image=new_image)
-
+    print(f"Gate {index}")
 # List of button positions
 button_positions = [
     (30, 120),
@@ -51,12 +51,14 @@ button_positions = [
 
 # Create and place buttons on the window
 buttons = []
-for position in button_positions:
+for i, position in enumerate(button_positions, start=1):
     button = tk.Button(root, image=image1_photo)
-    command = partial(on_button_press, button, image1_photo, image2_photo)
+    command = partial(on_button_press, button, image1_photo, image2_photo, i)
     button.config(command=command)
     button.place(x=position[0], y=position[1])
     buttons.append(button)
+    label = tk.Label(root, text="Gate " + str(i))
+    label.place(x=position[0]+ 9, y=position[1] +60)
 
 # Keep references to the PhotoImage objects to prevent garbage collection
 image_references = [image1_photo, image2_photo]
