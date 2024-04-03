@@ -58,8 +58,18 @@ for position in button_positions:
     button.place(x=position[0], y=position[1])
     buttons.append(button)
 
+<<<<<<< HEAD
 # Keep references to the PhotoImage objects to prevent garbage collection
 image_references = [image1_photo, image2_photo]
+=======
+# Create a pressable button that changes its image
+button = tk.Button(root, image=image1_photo, command=on_button_press)
+button.place(x=30, y=120)
+button = tk.Button(root, image=image1_photo, command=on_button_press)
+button.place(x=30, y=260)
+button = tk.Button(root, image=image1_photo, command=on_button_press())
+button.place(x=100, y=430)
+>>>>>>> ec6a6fac69cecc03e9e22a0beab382a60b8f2b9b
 
 # Start the Tkinter event loop
 root.mainloop()
