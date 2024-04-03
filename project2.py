@@ -28,23 +28,38 @@ root.geometry(f"{background_width}x{background_height}")
 
 # Function to change the button's image
 def on_button_press(button, image1_photo, image2_photo):
-    # Determine which image is currently set and switch to the other
     current_image = button.cget('image')
     new_image = image2_photo if current_image == str(image1_photo) else image1_photo
     button.config(image=new_image)
 
-# Keep references to the PhotoImage objects to prevent garbage collection
-image_references = [image1_photo, image2_photo]
+# List of button positions
+button_positions = [
+    (30, 120),
+    (30, 260),
+    (30, 365),
+    (145, 390),
+    (305, 445),
+    (470, 500),
+    (715, 580),
+    (830, 615),
+    (940, 560),
+    (950, 460),
+    (945, 325),
+    # Add more tuples for each button you want to add, like:
+    # (x_position, y_position),
+]
 
 # Create and place buttons on the window
 buttons = []
-for i, y in enumerate([120, 260], start=1):
+for position in button_positions:
     button = tk.Button(root, image=image1_photo)
-    # Pass the name of the image, which is used internally by Tkinter
     command = partial(on_button_press, button, image1_photo, image2_photo)
     button.config(command=command)
-    button.place(x=30, y=y)
+    button.place(x=position[0], y=position[1])
     buttons.append(button)
+
+# Keep references to the PhotoImage objects to prevent garbage collection
+image_references = [image1_photo, image2_photo]
 
 # Start the Tkinter event loop
 root.mainloop()
