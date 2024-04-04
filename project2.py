@@ -69,7 +69,7 @@ def toggle_flight_info(button, gate_number, image1_photo, image2_photo):
             tag = ('delayed',) if flight[4] else ()  # Tag for styling delayed flights
             tree.insert('', tk.END, values=flight, tags=tag)
 
-        tree.tag_configure('delayed', foreground='red')  # Style for delayed flights
+        tree.tag_configure('delayed', foreground    ='red')  # Style for delayed flights
         tree.pack(expand=True, fill='both')
 
 def close_window(gate_number, button, image1_photo):
