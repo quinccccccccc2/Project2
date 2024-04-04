@@ -25,7 +25,7 @@ image2 = image2.resize((50, 50), Image.Resampling.LANCZOS)
 image2_photo = ImageTk.PhotoImage(image2)
 
 # Set the root window size to match the background image
-root.geometry(f"{background_width}x{background_height}")
+root.geometry(f"{background_width}x{background_height+30}")
 
 # Dictionary to keep track of windows
 open_windows = {}
