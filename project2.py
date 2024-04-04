@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from PIL import Image, ImageTk
 from functools import partial
 
@@ -26,12 +27,55 @@ image2_photo = ImageTk.PhotoImage(image2)
 # Set the root window size to match the background image
 root.geometry(f"{background_width}x{background_height}")
 
-# Function to change the button's image
-def on_button_press(button, image1_photo, image2_photo, index):
-    current_image = button.cget('image')
-    new_image = image2_photo if current_image == str(image1_photo) else image1_photo
-    button.config(image=new_image)
-    print(f"Gate {index}")
+# Dictionary to keep track of windows
+open_windows = {}
+
+# Function to open or close the flight information window
+def toggle_flight_info(button, gate_number, image1_photo, image2_photo):
+    # Close the window if already open
+    if gate_number in open_windows and open_windows[gate_number].winfo_exists():
+        open_windows[gate_number].destroy()
+        open_windows.pop(gate_number, None)
+        button.config(image=image1_photo)  # Revert button image
+    else:
+        # Open a new information window
+        info_window = tk.Toplevel(root)
+        info_window.title(f"Flight Information for Gate {gate_number}")
+        open_windows[gate_number] = info_window  # Track the window
+        button.config(image=image2_photo)  # Change button image
+
+        # Set the window to revert button image when closed
+        info_window.protocol("WM_DELETE_WINDOW", partial(close_window, gate_number, button, image1_photo))
+
+        # Create and populate the Treeview with flight information
+        tree = ttk.Treeview(info_window, columns=('Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Delay', 'New Gate'), show='headings')
+        tree.heading('Boarding Time', text='Boarding Time')
+        tree.heading('Departure Time', text='Departure Time')
+        tree.heading('Airline', text='Airline')
+        tree.heading('Destination', text='Destination')
+        tree.heading('Delay', text='Delay')
+        tree.heading('New Gate', text='New Gate')
+
+        # Sample flight information
+        flights_info = [
+            ('12:00 PM', '1:00 PM', 'Example Airline 1', 'New York', '', ''),
+            ('3:00 PM', '4:00 PM', 'Example Airline 2', 'Los Angeles', 'Delayed', 'Gate 5'),
+            # Add more sample or dynamic flight information here
+        ]
+
+        for flight in flights_info:
+            tag = ('delayed',) if flight[4] else ()  # Tag for styling delayed flights
+            tree.insert('', tk.END, values=flight, tags=tag)
+
+        tree.tag_configure('delayed', foreground='red')  # Style for delayed flights
+        tree.pack(expand=True, fill='both')
+
+def close_window(gate_number, button, image1_photo):
+    if gate_number in open_windows:
+        open_windows[gate_number].destroy()
+        open_windows.pop(gate_number, None)
+    button.config(image=image1_photo)
+
 # List of button positions
 button_positions = [
     (30, 120),
@@ -45,20 +89,16 @@ button_positions = [
     (940, 560),
     (950, 460),
     (945, 325),
-    # Add more tuples for each button you want to add, like:
-    # (x_position, y_position),
 ]
 
 # Create and place buttons on the window
-buttons = []
 for i, position in enumerate(button_positions, start=1):
     button = tk.Button(root, image=image1_photo)
-    command = partial(on_button_press, button, image1_photo, image2_photo, i)
+    command = partial(toggle_flight_info, button, i, image1_photo, image2_photo)
     button.config(command=command)
     button.place(x=position[0], y=position[1])
-    buttons.append(button)
-    label = tk.Label(root, text="Gate " + str(i))
-    label.place(x=position[0]+ 9, y=position[1] +60)
+    label = tk.Label(root, text=f"Gate {i}")
+    label.place(x=position[0] + 9, y=position[1] + 60)
 
 # Keep references to the PhotoImage objects to prevent garbage collection
 image_references = [image1_photo, image2_photo]
