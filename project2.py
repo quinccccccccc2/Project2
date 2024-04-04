@@ -1,7 +1,9 @@
 import tkinter as tk
+import time
 from tkinter import ttk
 from PIL import Image, ImageTk
 from functools import partial
+
 
 # Initialize Tkinter window
 root = tk.Tk()
@@ -16,12 +18,12 @@ background_label = tk.Label(root, image=background_photo)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 # Load and resize images for the buttons
-image1 = Image.open("blackplane.png")
-image1 = image1.resize((50, 50), Image.Resampling.LANCZOS)
+image1 = Image.open("airplaneicon.jpg")
+image1 = image1.resize((50, 64), Image.Resampling.LANCZOS)
 image1_photo = ImageTk.PhotoImage(image1)
 
-image2 = Image.open("yellowplane.png")
-image2 = image2.resize((50, 50), Image.Resampling.LANCZOS)
+image2 = Image.open("airplaneiconblk.jpg")
+image2 = image2.resize((50, 64), Image.Resampling.LANCZOS)
 image2_photo = ImageTk.PhotoImage(image2)
 
 # Set the root window size to match the background image
@@ -75,6 +77,17 @@ def close_window(gate_number, button, image1_photo):
         open_windows[gate_number].destroy()
         open_windows.pop(gate_number, None)
     button.config(image=image1_photo)
+
+def update_time():
+    current_time = time.strftime('%H:%M:%S')  # Get current time in military time format (24-hour)
+    time_label.config(text=current_time)  # Update the label with the current time
+    root.after(1000, update_time)  # Schedule the function to be called after 1 second
+
+# Create a label widget for displaying the time
+time_label = tk.Label(root, font=('Helvetica', 20), bg='white')
+time_label.place(x=10, y=background_height-30)  # Position the time label at the bottom left
+
+update_time()  # Initialize the time update
 
 # List of button positions
 button_positions = [
