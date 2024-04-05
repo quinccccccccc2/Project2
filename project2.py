@@ -6,6 +6,7 @@ from functools import partial
 import pandas as pd
 from datetime import datetime
 import csv
+import re
 
 # Initialize Tkinter window
 root = tk.Tk()
@@ -19,19 +20,20 @@ if not csv_file_path:
 
 df = pd.read_csv(csv_file_path)
 
+
 def clear_csv_file(file_path):
     print(f"Clearing file: {file_path}")
     try:
         with open(file_path, 'w', newline='') as file:
             # Replicating the provided CSV file's header format exactly
-            headers = "Airline Name,Flight Number,Plane Model,Boarding Time,Departure Time,Gate Number,Destination\n"
+            headers = "Airline Name,Flight Number,Plane Model,Boarding Time,Departure Time,Gate Number,Destination,Status\n"
             file.write(headers)
         print("File cleared successfully.")
     except Exception as e:
         print(f"Failed to clear file: {e}")
 
-clear_csv_file("Temp flight file.csv")
 
+clear_csv_file("Temp flight file.csv")
 
 # Load the background image and set as the window background
 background_image_path = "backgroundbilly.png"  # Adjust the path to your background image
@@ -72,10 +74,30 @@ def delay_flight(tree):
         item = tree.item(selected_item)
         original_values = item['values']
 
-        # Request new values for boarding and departure times
-        new_boarding = simpledialog.askstring("Update Boarding Time", "Enter new boarding time (HH:MM):", parent=tree)
-        new_departure = simpledialog.askstring("Update Departure Time", "Enter new departure time (HH:MM):", parent=tree)
-        # Request for new gate, if applicable
+        time_format_regex = r'^([0-1]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$'
+
+        new_boarding = None
+        while new_boarding is None:
+            temp_boarding = simpledialog.askstring("Update Boarding Time", "Enter new boarding time (HH:MM:SS):",
+                                                   parent=tree)
+            if temp_boarding is None:  # User cancelled
+                break
+            if re.match(time_format_regex, temp_boarding):
+                new_boarding = temp_boarding
+            else:
+                tk.messagebox.showerror("Invalid Format", "Please enter the time in HH:MM:SS format.")
+
+        new_departure = None
+        while new_departure is None:
+            temp_departure = simpledialog.askstring("Update Departure Time", "Enter new departure time (HH:MM:SS):",
+                                                    parent=tree)
+            if temp_departure is None:  # User cancelled
+                break
+            if re.match(time_format_regex, temp_departure):
+                new_departure = temp_departure
+            else:
+                tk.messagebox.showerror("Invalid Format", "Please enter the time in HH:MM:SS format.")
+
         while True:
             temp_gate = simpledialog.askstring("Update Gate number", "Enter gate number (1-11):", parent=tree)
             try:
@@ -118,7 +140,8 @@ def delay_flight(tree):
                     new_boarding,  # Boarding Time
                     new_departure,  # Departure Time
                     new_gate,  # Gate Number
-                    new_values[4]  # Destination
+                    new_values[4],  # Destination
+                    new_values[5]  # Status
                 ])
 
 
@@ -131,7 +154,9 @@ def open_info_window(gate_number):
         frame = tk.Frame(info_window)
         frame.pack(expand=True, fill='both')
 
-        tree = ttk.Treeview(frame, columns=('Flight Number', 'Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status', 'New Gate'), show='headings')
+        tree = ttk.Treeview(frame, columns=(
+            'Flight Number', 'Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status', 'New Gate'),
+                            show='headings')
         tree.heading('New Gate', text='New Gate')
         tree.heading('Flight Number', text='Flight Number')
         tree.heading('Boarding Time', text='Boarding Time')
@@ -175,7 +200,6 @@ def open_info_window(gate_number):
         temp_flight_info = "Temp flight file.csv"
         temp_flight_info_read = pd.read_csv(temp_flight_info)
 
-
         # Create a Scrollbar and associate it with the treeview
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
         scrollbar.pack(side='right', fill='y')
@@ -211,10 +235,14 @@ def open_info_window(gate_number):
 
         # Apply the tag style to the tree
         tree.tag_configure('currentFlight', background='yellow')  # Apply the defined style to the 'currentFlight' tag
+        tree.tag_configure('cancelled', background='red')
 
         # Display the treeview
         tree.pack(expand=True, fill='both')
 
+        # In the same open_info_window function, create and pack a cancel button
+        cancel_button = tk.Button(info_window, text="Cancel Flight", command=lambda: cancel_flight(tree))
+        cancel_button.pack(side=tk.BOTTOM, anchor=tk.E)
         # Create a delay button
         delay_button = tk.Button(info_window, text="Delay", command=lambda: delay_flight(tree))
         delay_button.pack(side=tk.BOTTOM, anchor=tk.E)
@@ -244,25 +272,71 @@ for i, position in enumerate(button_positions, start=1):
     gate_labels[i] = label  # Store the label
 
 
+def cancel_flight(tree):
+    selected_item = tree.selection()[0] if tree.selection() else None
+    if selected_item:
+        item = tree.item(selected_item)
+        values = list(item['values'])
+
+        # Ensure 'Status' is correctly set to 'Cancelled'
+        if len(values) >= 6:  # Assuming 'Status' is the 6th value
+            values[5] = 'Cancelled'  # Update status; adjust index as necessary
+        else:
+            # Handle the case where there are fewer elements than expected
+            print("Unexpected item structure:", values)
+            return  # Optionally, handle this case more gracefully
+
+        # Update the Treeview item with modified values
+        tree.item(selected_item, values=values, tags=('cancelled',))
+
+        # Update DataFrame and persist changes as needed
+        flight_number = values[0]  # Assuming flight number is the first value
+        df.loc[df['Flight Number'] == flight_number, 'Status'] = 'Cancelled'
+        df.to_csv(csv_file_path, index=False)
+
+
 def update_all():
     current_time = datetime.now().strftime('%H:%M:%S')
     time_label.config(text="Current Time: " + current_time)
 
+    try:
+        temp_df = pd.read_csv("Temp flight file.csv")
+        # Ensure 'Status' column exists, setting a default if not
+        if 'Status' not in temp_df.columns:
+            temp_df['Status'] = 'On-Time'  # Assuming 'On-Time' as default status
+    except Exception as e:
+        print("Error reading Temp flight file.csv:", e)
+        temp_df = pd.DataFrame()
+
+    # Attempt to read the temp flight information
+    try:
+        temp_df = pd.read_csv("Temp flight file.csv")
+    except Exception as e:
+        print("Error loading Temp flight file.csv:", e)
+        temp_df = pd.DataFrame()
+
+    # First, reset all gate icons to default
     for gate_number, button in gate_buttons.items():
-        matching_flights = df[df['Gate Number'] == gate_number]
-        flight_is_current = False
-        for _, flight in matching_flights.iterrows():
+        button.config(image=image1_photo)  # Reset to default icon
+        gate_labels[gate_number].config(bg='white')  # Reset label background color
+
+    # Iterate over delayed flights to update gate icons
+    delayed_gates = temp_df[temp_df['Status'] == 'Delayed']['Gate Number'].unique()
+    for gate_number in delayed_gates:
+        if gate_number in gate_buttons:
+            gate_buttons[gate_number].config(image=image2_photo)  # Set to delayed flight icon
+            gate_labels[gate_number].config(bg='orange')  # Optional: change label bg color for visual cue
+
+    # Check for current flights to highlight boarding
+    for _, flight in df.iterrows():
+        gate_number = flight['Gate Number']
+        if gate_number in gate_buttons and gate_number not in delayed_gates:
             boarding_time = datetime.strptime(flight['Boarding Time'], '%H:%M:%S').time()
             departure_time = datetime.strptime(flight['Departure Time'], '%H:%M:%S').time()
             current_time_dt = datetime.strptime(current_time, '%H:%M:%S').time()
-            if boarding_time <= current_time_dt < departure_time:
-                button.config(image=image2_photo)
-                gate_labels[gate_number].config(bg='yellow')  # Highlight label with color
-                flight_is_current = True
-                break
-        if not flight_is_current:
-            button.config(image=image1_photo)
-            gate_labels[gate_number].config(bg='white')  # Reset label background color
+            if boarding_time <= current_time_dt <= departure_time:
+                gate_buttons[gate_number].config(image=image2_photo)
+                gate_labels[gate_number].config(bg='yellow')  # Highlight boarding
 
     root.after(1000, update_all)
 
