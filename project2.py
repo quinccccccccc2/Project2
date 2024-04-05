@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 from functools import partial
 import pandas as pd
 from datetime import datetime
+import csv
 
 # Initialize Tkinter window
 root = tk.Tk()
@@ -17,6 +18,20 @@ if not csv_file_path:
     exit()  # Exit the application if no file is selected
 
 df = pd.read_csv(csv_file_path)
+
+def clear_csv_file(file_path):
+    print(f"Clearing file: {file_path}")
+    try:
+        with open(file_path, 'w', newline='') as file:
+            # Replicating the provided CSV file's header format exactly
+            headers = "Airline Name,Flight Number,Plane Model,Boarding Time,Departure Time,Gate Number,Destination\n"
+            file.write(headers)
+        print("File cleared successfully.")
+    except Exception as e:
+        print(f"Failed to clear file: {e}")
+
+clear_csv_file("Temp flight file.csv")
+
 
 # Load the background image and set as the window background
 background_image_path = "backgroundbilly.png"  # Adjust the path to your background image
@@ -61,8 +76,16 @@ def delay_flight(tree):
         new_boarding = simpledialog.askstring("Update Boarding Time", "Enter new boarding time (HH:MM):", parent=tree)
         new_departure = simpledialog.askstring("Update Departure Time", "Enter new departure time (HH:MM):", parent=tree)
         # Request for new gate, if applicable
-        new_gate = simpledialog.askstring("Update Gate Number", "Enter new gate (if unchanged, press Cancel):", parent=tree)
-
+        while True:
+            temp_gate = simpledialog.askstring("Update Gate number", "Enter gate number (1-11):", parent=tree)
+            try:
+                if temp_gate is not None and 1 <= int(temp_gate) <= 11:
+                    new_gate = temp_gate
+                    break
+                else:
+                    print("ERROR: INVALID GATE")
+            except ValueError:
+                print("ERROR: PLEASE INPUT A VALID GATE NUMBER")
         # Determine if any value has changed
         values_changed = False
         new_values = list(original_values)  # Make a copy of the original values
@@ -75,15 +98,26 @@ def delay_flight(tree):
             new_values[2] = new_departure  # Update departure time
             values_changed = True
 
-        # If new_gate is provided and different, update 'New Gate'
-        if new_gate and new_gate.strip() != "" and new_gate != str(original_values[-1]):
-            new_values.append(new_gate)  # Append new gate info
+        if new_gate and new_gate.strip() != "" and new_gate != str(original_values[5]):  # Assuming gate number is at index 5
+            new_values[6] = new_gate
             values_changed = True
 
-        # Update status to "Delayed" if there's any change
+        # Apply the update if any value changed
         if values_changed:
-            new_values[5] = "Delayed"  # Assuming the 'Status' is the sixth column
+            new_values[5] = "Delayed"
             tree.item(selected_item, values=new_values, tags=('modified',))
+            with open("Temp flight file.csv", "a", newline='') as file:
+                csv_writer = csv.writer(file)
+                csv_writer.writerow([
+                    new_values[3],  # Airline Name
+                    new_values[0],  # Flight Number
+                    "",  # Plane Model, assuming empty for simplicity
+                    new_boarding,  # Boarding Time
+                    new_departure,  # Departure Time
+                    new_gate,  # Gate Number
+                    new_values[4]  # Destination
+                ])
+
 
 def open_info_window(gate_number):
     if gate_number not in open_windows or not open_windows[gate_number].winfo_exists():
@@ -91,16 +125,10 @@ def open_info_window(gate_number):
         info_window.title(f"Flight Information for Gate {gate_number}")
         open_windows[gate_number] = info_window
 
-        # Create a frame for the treeview and scrollbar
         frame = tk.Frame(info_window)
         frame.pack(expand=True, fill='both')
 
-        # Create the Treeview widget
-        tree = ttk.Treeview(frame,
-                            columns=(
-                                'Flight Number', 'Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status',
-                                'New Gate'),
-                            show='headings')
+        tree = ttk.Treeview(frame, columns=('Flight Number', 'Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status', 'New Gate'), show='headings')
         tree.heading('New Gate', text='New Gate')
         tree.heading('Flight Number', text='Flight Number')
         tree.heading('Boarding Time', text='Boarding Time')
@@ -108,6 +136,42 @@ def open_info_window(gate_number):
         tree.heading('Airline', text='Airline')
         tree.heading('Destination', text='Destination')
         tree.heading('Status', text='Status')
+
+        # Correctly accessing DataFrame for primary flights
+        gate_flights_primary = df[df["Gate Number"].astype(str) == str(gate_number)]
+        for _, flight in gate_flights_primary.iterrows():
+            tree.insert('', tk.END, values=(
+                flight['Flight Number'],
+                flight['Boarding Time'],
+                flight['Departure Time'],
+                flight['Airline Name'],
+                flight['Destination'],
+                "On-Time",
+                ""  # Assuming no 'New Gate' information for primary CSV
+            ))
+
+        temp_flight_info = "Temp flight file.csv"
+        temp_flight_info_read = pd.read_csv(temp_flight_info)
+
+        # Filter for the specified gate number in the secondary CSV
+        # Make sure 'Gate Number' is treated consistently as an integer or string across both DataFrames
+        gate_flights_secondary = temp_flight_info_read[temp_flight_info_read['Gate Number'] == int(gate_number)]
+        for index, flight in gate_flights_secondary.iterrows():
+            # Insert values into the tree, assuming 'Flight Number' and 'Airline Name' are present and need to be shown
+            tree.insert('', tk.END, values=(
+                flight['Flight Number'],  # Assuming this column exists in your secondary CSV
+                flight['Boarding Time'],
+                flight['Departure Time'],
+                flight['Airline Name'],  # Or another placeholder if the airline name isn't in the secondary CSV
+                flight['Destination'],
+                "Delayed",  # Status for delayed flights
+                flight['Gate Number']  # Assuming 'New Gate' is a column in your secondary CSV
+            ))
+
+        # Prepare the secondary CSV (already cleared by clear_csv_file function)
+        temp_flight_info = "Temp flight file.csv"
+        temp_flight_info_read = pd.read_csv(temp_flight_info)
+
 
         # Create a Scrollbar and associate it with the treeview
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
