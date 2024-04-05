@@ -98,10 +98,13 @@ def delay_flight(tree):
             new_values[2] = new_departure  # Update departure time
             values_changed = True
 
-        if new_gate and new_gate.strip() != "" and new_gate != str(original_values[5]):  # Assuming gate number is at index 5
-            new_values[6] = new_gate
-            values_changed = True
-
+        if new_gate:
+            try:
+                if new_gate != str(original_values[6]):
+                    new_values[6] = new_gate
+                    values_changed = True
+            except IndexError:
+                print("IndexError: 'New Gate' not found")
         # Apply the update if any value changed
         if values_changed:
             new_values[5] = "Delayed"
