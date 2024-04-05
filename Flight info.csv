@@ -1,101 +1,51 @@
-Airline Name,Flight Number,Flight Model,Gate Number,Initial Boarding Time,Initial Departure Time,Status,New Gate Number,New Boarding Time,New Departure Time
-United,SP208,Dash 8 Q400,4,23:16,0:43,On Time,,,
-Hawaiian,SW702,Dash 8 Q400,2,11:08,12:06,Delayed,7,11:28,13:50
-Spirit,AS282,CRJ-700,1,7:25,8:40,On Time,,,
-Hawaiian,AA533,Embraer 190,11,11:11,12:11,Delayed,8,11:51,13:29
-American,AS931,Embraer 190,9,16:17,17:27,On Time,,,
-Allegiant,HA893,Embraer 175,8,15:18,16:41,Delayed,10,15:46,18:12
-United,AS960,CRJ-900,2,3:18,4:26,On Time,,,
-United,AA707,CRJ-700,9,22:09,22:49,Delayed,10,22:53,0:49
-Southwest,HA304,CRJ-700,3,7:35,8:10,Delayed,1,7:59,9:12
-Spirit,AS436,ATR 72,1,18:31,19:13,Delayed,10,19:21,21:06
-Alaska,AA180,Embraer 190,3,0:13,0:57,On Time,,,
-Frontier,AS283,CRJ-700,8,18:13,18:58,On Time,,,
-JetBlue,DL599,Dash 8 Q400,6,0:54,1:38,Delayed,1,1:42,3:29
-JetBlue,UA214,CRJ-900,9,15:36,16:52,Delayed,1,15:53,18:50
-Spirit,AS854,CRJ-900,6,3:12,4:03,Delayed,9,3:26,5:57
-Allegiant,AA453,CRJ-900,9,18:01,18:32,Delayed,1,18:40,20:08
-Allegiant,SP572,Embraer 175,10,20:51,21:22,Delayed,8,21:13,22:24
-JetBlue,DL579,Embraer 175,3,3:48,5:07,Delayed,9,4:00,6:34
-Delta,AS486,Embraer 190,10,1:42,2:22,On Time,,,
-United,FR326,CRJ-900,11,6:05,7:34,On Time,,,
-United,HA646,CRJ-900,1,17:31,18:20,On Time,,,
-Delta,UA543,Dash 8 Q400,10,15:33,16:58,On Time,,,
-Frontier,JB409,Embraer 175,11,12:33,13:04,Delayed,5,13:06,15:02
-Spirit,SP388,CRJ-900,2,11:18,11:58,On Time,,,
-JetBlue,SW871,Dash 8 Q400,1,7:24,8:29,On Time,,,
-Hawaiian,FR638,CRJ-700,8,4:56,6:12,On Time,,,
-Frontier,JB829,CRJ-700,3,21:35,22:52,Delayed,10,22:01,0:22
-Alaska,FR378,CRJ-900,3,20:19,21:37,Delayed,8,20:41,22:42
-Delta,FR334,CRJ-900,1,10:29,11:23,Delayed,3,11:15,12:24
-United,UA921,Embraer 175,9,18:49,19:43,On Time,,,
-Delta,FR723,CRJ-700,6,3:18,4:26,On Time,,,
-Hawaiian,HA338,Embraer 175,9,12:35,13:56,Delayed,5,13:19,15:17
-Southwest,AS304,Embraer 190,2,14:27,15:30,On Time,,,
-Hawaiian,SW784,Embraer 175,11,17:36,18:44,On Time,,,
-Allegiant,UA520,Embraer 175,9,0:30,1:32,On Time,,,
-Allegiant,AL470,Embraer 175,6,2:06,3:17,On Time,,,
-United,JB759,Dash 8 Q400,3,6:39,7:35,Delayed,6,7:24,8:48
-Frontier,AS593,Embraer 190,10,14:47,15:17,On Time,,,
-JetBlue,FR149,Dash 8 Q400,1,18:54,20:00,On Time,,,
-Delta,AS203,ATR 72,9,17:38,18:18,Delayed,4,18:07,19:47
-Delta,SW949,Dash 8 Q400,9,1:00,1:56,On Time,,,
-Alaska,JB872,ATR 72,6,1:10,1:44,On Time,,,
-United,AA524,Dash 8 Q400,10,3:18,4:06,On Time,,,
-Alaska,AA717,Dash 8 Q400,3,4:00,4:34,On Time,,,
-JetBlue,AA828,Dash 8 Q400,8,22:06,23:08,On Time,,,
-JetBlue,FR573,Dash 8 Q400,10,14:29,15:17,On Time,,,
-United,FR296,CRJ-700,4,6:42,7:27,Delayed,1,7:10,8:40
-Southwest,SP174,Embraer 175,8,8:32,9:11,On Time,,,
-Delta,JB665,Dash 8 Q400,4,17:08,18:25,On Time,,,
-JetBlue,JB287,Dash 8 Q400,8,12:44,14:08,Delayed,3,13:42,15:46
-American,AL954,Embraer 190,9,11:38,12:43,Delayed,11,12:27,14:32
-Alaska,HA700,ATR 72,11,2:38,3:53,Delayed,6,3:24,5:33
-Delta,AL361,Embraer 190,3,23:08,0:04,Delayed,6,23:44,1:43
-Delta,SW894,ATR 72,11,22:30,23:27,Delayed,6,23:18,1:05
-American,AL149,Embraer 190,7,13:34,14:23,On Time,,,
-United,AA383,Embraer 190,8,18:09,18:56,Delayed,2,18:53,20:23
-Delta,SW632,Embraer 190,9,4:39,6:08,On Time,,,
-Frontier,SW842,ATR 72,11,22:46,23:58,Delayed,11,23:31,1:15
-JetBlue,DL590,CRJ-900,4,16:06,16:52,Delayed,7,16:16,18:06
-Allegiant,HA445,CRJ-900,6,16:40,17:28,Delayed,11,17:17,19:01
-Alaska,AL849,Dash 8 Q400,6,10:26,11:34,On Time,,,
-Alaska,HA813,Embraer 175,3,8:30,9:13,Delayed,9,9:03,10:16
-Hawaiian,AL376,Dash 8 Q400,6,16:28,17:00,On Time,,,
-Spirit,AL160,Dash 8 Q400,1,14:22,15:47,On Time,,,
-JetBlue,SW808,Embraer 175,4,1:33,2:06,On Time,,,
-Southwest,SP962,CRJ-900,11,23:34,0:37,Delayed,1,0:20,2:05
-Hawaiian,FR812,CRJ-900,3,6:15,7:02,On Time,,,
-Delta,UA374,Embraer 175,5,6:53,7:33,Delayed,3,7:52,8:34
-Hawaiian,FR756,CRJ-900,10,2:44,3:22,Delayed,7,2:55,4:27
-Hawaiian,AS678,CRJ-700,2,12:50,13:56,Delayed,10,13:45,15:26
-Alaska,AS113,CRJ-700,9,23:43,1:00,Delayed,8,0:41,2:25
-Frontier,HA690,CRJ-900,10,23:08,0:03,Delayed,3,0:05,1:28
-Alaska,HA763,Embraer 190,6,9:29,10:27,On Time,,,
-Spirit,AL945,CRJ-700,3,7:04,7:41,Delayed,6,8:04,8:56
-Southwest,JB283,CRJ-900,1,16:31,17:23,Delayed,9,17:28,19:17
-Southwest,SW492,CRJ-900,1,17:52,19:04,On Time,,,
-Delta,HA843,ATR 72,1,23:47,0:18,Delayed,5,0:22,2:17
-American,AA633,Embraer 190,10,5:43,6:28,Delayed,5,6:15,7:55
-Allegiant,UA304,Dash 8 Q400,9,1:27,1:59,On Time,,,
-Allegiant,SW860,CRJ-700,8,17:30,18:47,Delayed,3,17:53,20:21
-Delta,FR540,CRJ-700,5,19:27,20:40,On Time,,,
-Spirit,HA233,CRJ-700,3,13:27,14:43,Delayed,7,14:14,15:54
-Hawaiian,AL978,Embraer 190,11,3:02,4:16,On Time,,,
-Alaska,JB959,CRJ-900,7,3:01,4:08,On Time,,,
-American,AA999,Embraer 190,10,21:11,22:34,Delayed,9,21:30,23:57
-Spirit,SP646,Embraer 190,6,13:32,14:38,On Time,,,
-Southwest,AS879,CRJ-700,2,22:54,23:47,Delayed,6,23:26,1:09
-United,HA554,CRJ-900,10,18:00,19:18,On Time,,,
-JetBlue,SP450,CRJ-900,10,3:45,4:30,Delayed,6,3:58,5:52
-Spirit,SP164,CRJ-900,7,4:14,5:00,Delayed,3,5:10,6:08
-United,SW837,Embraer 190,7,18:10,19:10,Delayed,7,18:35,20:35
-Delta,HA699,Dash 8 Q400,1,3:28,4:26,Delayed,1,4:04,5:34
-Allegiant,JB373,ATR 72,11,10:28,11:15,On Time,,,
-Alaska,AS891,Embraer 175,3,9:39,10:24,Delayed,2,10:27,11:40
-Southwest,AA457,Embraer 175,6,4:19,4:54,On Time,,,
-Delta,AL769,Dash 8 Q400,8,6:06,7:06,On Time,,,
-American,UA949,ATR 72,5,2:28,3:18,On Time,,,
-Allegiant,SW418,CRJ-900,11,14:37,15:56,On Time,,,
-Southwest,AA877,Dash 8 Q400,9,8:24,9:51,On Time,,,
-United,FR647,Embraer 190,5,22:59,23:57,Delayed,4,23:31,1:22
+Airline Name,Flight Number,Plane Model,Boarding Time,Departure Time,Gate Number,Destination
+WestJet,PD600,Embraer E190,0:29:00,0:59:00,1,New York
+WestJet,WS411,Embraer E190,1:09:00,1:39:00,1,New York
+Porter Airlines,PD711,Embraer E190,21:49:00,22:19:00,1,Ottawa
+Air Canada,WS865,ATR 72,22:29:00,22:59:00,1,New York
+WestJet,WS973,Bombardier Q400,23:09:00,23:39:00,1,Ottawa
+Air Canada,PD889,Embraer E190,23:49:00,0:19:00,1,New York
+Porter Airlines,AC753,Bombardier Q400,0:11:00,0:41:00,2,Ottawa
+Air Canada,WS801,ATR 72,0:51:00,1:21:00,2,New York
+Porter Airlines,WS953,ATR 72,22:02:00,22:32:00,2,Ottawa
+Air Canada,PD515,Bombardier Q400,22:42:00,23:12:00,2,Chicago
+Air Canada,WS905,Dash 8-400,23:22:00,23:52:00,2,Washington
+Air Canada,PD557,Embraer E190,0:02:00,0:32:00,2,New York
+WestJet,PD961,ATR 72,0:42:00,1:12:00,2,Chicago
+Air Canada,WS119,Dash 8-400,0:23:00,0:53:00,3,Montreal
+Porter Airlines,WS305,Embraer E190,1:03:00,1:33:00,3,Chicago
+Porter Airlines,WS328,Dash 8-400,1:43:00,2:13:00,3,Montreal
+WestJet,WS742,Dash 8-400,2:23:00,2:53:00,3,Ottawa
+Air Canada,AC607,Dash 8-400,3:03:00,3:33:00,3,Washington
+WestJet,PD916,Bombardier Q400,3:43:00,4:13:00,3,Washington
+Porter Airlines,PD115,Embraer E190,21:43:00,22:13:00,3,New York
+Air Canada,PD329,ATR 72,22:23:00,22:53:00,3,Chicago
+Air Canada,PD689,Bombardier Q400,23:03:00,23:33:00,3,New York
+WestJet,WS454,Embraer E190,23:43:00,0:13:00,3,Montreal
+Air Canada,PD326,ATR 72,0:23:00,0:53:00,3,Boston
+WestJet,WS357,Bombardier Q400,1:03:00,1:33:00,3,Boston
+Porter Airlines,AC863,ATR 72,1:43:00,2:13:00,3,Ottawa
+WestJet,AC905,ATR 72,2:23:00,2:53:00,3,Montreal
+Air Canada,PD797,ATR 72,0:27:00,0:57:00,4,Boston
+Porter Airlines,WS319,Bombardier Q400,21:47:00,22:17:00,4,Chicago
+WestJet,PD625,Embraer E190,22:27:00,22:57:00,4,New York
+Air Canada,WS929,Embraer E190,23:07:00,23:37:00,4,Washington
+WestJet,WS797,Bombardier Q400,23:47:00,0:17:00,4,Boston
+Air Canada,WS553,ATR 72,0:27:00,0:57:00,4,Montreal
+Porter Airlines,WS943,Embraer E190,1:07:00,1:37:00,4,New York
+Porter Airlines,PD832,Dash 8-400,1:47:00,2:17:00,4,New York
+Air Canada,AC163,ATR 72,21:42:00,22:12:00,5,New York
+WestJet,WS451,Bombardier Q400,22:22:00,22:52:00,5,Ottawa
+Porter Airlines,PD774,ATR 72,23:02:00,23:32:00,5,Chicago
+WestJet,AC512,ATR 72,0:31:00,1:01:00,6,Washington
+WestJet,WS652,Bombardier Q400,1:11:00,1:41:00,6,Boston
+WestJet,AC622,Embraer E190,21:51:00,22:21:00,6,Montreal
+Air Canada,WS187,Embraer E190,22:31:00,23:01:00,6,Montreal
+Air Canada,PD994,ATR 72,23:11:00,23:41:00,6,Washington
+WestJet,WS558,Dash 8-400,23:51:00,0:21:00,6,Washington
+Air Canada,PD946,Bombardier Q400,0:26:00,0:56:00,7,Ottawa
+Porter Airlines,WS501,Bombardier Q400,1:06:00,1:36:00,7,New York
+Air Canada,AC525,Bombardier Q400,21:46:00,22:16:00,7,Montreal
+WestJet,PD674,Bombardier Q400,22:26:00,22:56:00,7,Chicago
+Porter Airlines,PD815,Embraer E190,23:06:00,23:36:00,7,New York
+Porter Airlines,PD724,Dash 8-400,23:46:00,0:16:00,7,Boston
