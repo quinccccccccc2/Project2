@@ -4,16 +4,17 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 from functools import partial
 import pandas as pd
+from datetime import datetime
 
 # Load the flight information from the CSV file
-df = pd.read_csv("Flight info.csv")
+df = pd.read_csv("Flight info.csv")  # Adjust the path to your CSV file
 
 # Initialize Tkinter window
 root = tk.Tk()
 root.title("Billy Bishop Universal Airport Management System")
 
 # Load the background image and set as the window background
-background_image_path = "backgroundbilly.png"
+background_image_path = "backgroundbilly.png"  # Adjust the path to your background image
 background_image = Image.open(background_image_path)
 background_width, background_height = background_image.size
 background_photo = ImageTk.PhotoImage(background_image)
@@ -21,41 +22,37 @@ background_label = tk.Label(root, image=background_photo)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 # Load and resize images for the buttons
-image1 = Image.open("airplaneicon.jpg")
+image1 = Image.open("airplaneicon.jpg")  # Adjust the path to your airplane icon
 image1 = image1.resize((50, 64), Image.Resampling.LANCZOS)
 image1_photo = ImageTk.PhotoImage(image1)
 
-image2 = Image.open("airplaneiconblk.jpg")
+image2 = Image.open("airplaneiconblk.jpg")  # Adjust the path to your alternate airplane icon
 image2 = image2.resize((50, 64), Image.Resampling.LANCZOS)
 image2_photo = ImageTk.PhotoImage(image2)
 
 # Set the root window size to match the background image
-root.geometry(f"{background_width}x{background_height+30}")
+root.geometry(f"{background_width}x{background_height + 30}")
 
 # Dictionary to keep track of windows
 open_windows = {}
 
-def close_window(gate_number, button, image1_photo):
-    if gate_number in open_windows:
-        open_windows[gate_number].destroy()
-        open_windows.pop(gate_number, None)
-    button.config(image=image1_photo)
 
-# Function to open or close the flight information window
-def toggle_flight_info(button, gate_number, image1_photo, image2_photo):
-    if gate_number in open_windows and open_windows[gate_number].winfo_exists():
-        open_windows[gate_number].destroy()
-        open_windows.pop(gate_number, None)
-        button.config(image=image1_photo)
-    else:
+def is_flight_time_now(boarding_time_str, departure_time_str):
+    current_time = datetime.now().time()
+    boarding_time = datetime.strptime(boarding_time_str, '%H:%M:%S').time()
+    departure_time = datetime.strptime(departure_time_str, '%H:%M:%S').time()
+    return boarding_time <= current_time <= departure_time
+
+
+def open_info_window(gate_number):
+    # Ensure the button does not change the icon upon being pressed
+    if gate_number not in open_windows or not open_windows[gate_number].winfo_exists():
         info_window = tk.Toplevel(root)
         info_window.title(f"Flight Information for Gate {gate_number}")
         open_windows[gate_number] = info_window
-        button.config(image=image2_photo)
 
-        info_window.protocol("WM_DELETE_WINDOW", partial(close_window, gate_number, button, image1_photo))
-
-        tree = ttk.Treeview(info_window, columns=('Boarding Time', 'Departure Time', 'Airline', 'Destination'), show='headings')
+        tree = ttk.Treeview(info_window, columns=('Boarding Time', 'Departure Time', 'Airline', 'Destination'),
+                            show='headings')
         tree.heading('Boarding Time', text='Boarding Time')
         tree.heading('Departure Time', text='Departure Time')
         tree.heading('Airline', text='Airline')
@@ -64,20 +61,23 @@ def toggle_flight_info(button, gate_number, image1_photo, image2_photo):
         # Filter flights for this gate
         gate_flights = df[df['Gate Number'] == gate_number]
         for index, flight in gate_flights.iterrows():
-            tree.insert('', tk.END, values=(flight['Boarding Time'], flight['Departure Time'], flight['Airline Name'], flight['Destination']))
+            tree.insert('', tk.END, values=(
+            flight['Boarding Time'], flight['Departure Time'], flight['Airline Name'], flight['Destination']))
 
         tree.pack(expand=True, fill='both')
 
-def update_time():
-    current_time = time.strftime('%H:%M:%S')
-    time_label.config(text=current_time)
-    root.after(1000, update_time)
+        # Remove the window from the dictionary when it is closed
+        def on_close(gate_number=gate_number, window=info_window):
+            window.destroy()  # Destroy the window
+            open_windows.pop(gate_number, None)  # Remove its reference from the dictionary
 
-time_label = tk.Label(root, font=('Helvetica', 20), bg='white')
-time_label.place(x=10, y=background_height-30)
+            # Set the protocol for the window close button ('X')
 
-update_time()
+        info_window.protocol("WM_DELETE_WINDOW", on_close)
 
+
+# Prepare gate buttons
+gate_buttons = {}
 button_positions = [
     (30, 120), (30, 260), (30, 365), (145, 390),
     (305, 445), (470, 500), (715, 580), (830, 615),
@@ -85,12 +85,60 @@ button_positions = [
 ]
 
 for i, position in enumerate(button_positions, start=1):
-    button = tk.Button(root, image=image1_photo)
-    command = partial(toggle_flight_info, button, i, image1_photo, image2_photo)
-    button.config(command=command)
+    button = tk.Button(root, image=image1_photo, command=partial(open_info_window, i))
     button.place(x=position[0], y=position[1])
     label = tk.Label(root, text=f"Gate {i}")
-    label.place(x=position[0] + 60, y=position[1] + 70)
+    label.place(x=position[0] + 60, y=position[1] + 20)
+    gate_buttons[i] = button  # Store the button with its gate number for easy reference
+
+
+def update_icons():
+    current_time_str = datetime.now().strftime('%H:%M:%S')
+    for gate_number, button in gate_buttons.items():
+        matching_flights = df[df['Gate Number'] == gate_number]
+        if not matching_flights.empty:
+            flight = matching_flights.iloc[0]
+            if is_flight_time_now(flight['Boarding Time'], flight['Departure Time']):
+                button.config(image=image2_photo)
+            else:
+                button.config(image=image1_photo)
+        else:
+            # Optional: Update button configuration for gates with no flights
+            # For example, you could disable the button or change its appearance
+            pass
+    root.after(1000, update_icons)  # Check every second for updates
+
+
+def check_flight_times():
+    current_time = datetime.now().strftime('%H:%M:%S')
+    for index, flight in df.iterrows():
+        boarding_time = datetime.strptime(flight['Boarding Time'], '%H:%M:%S').time()
+        departure_time = datetime.strptime(flight['Departure Time'], '%H:%M:%S').time()
+        current_time_dt = datetime.strptime(current_time, '%H:%M:%S').time()
+        gate_number = flight['Gate Number']
+        if gate_number in gate_buttons:
+            button = gate_buttons[gate_number]
+            # Change icon based on boarding and departure times
+            if boarding_time <= current_time_dt < departure_time:
+                button.config(image=image2_photo)  # Occupied
+            else:
+                button.config(image=image1_photo)  # Vacant or after departure
+    root.after(60000, check_flight_times)  # Check every minute
+
+
+def update_time():
+    current_time = time.strftime('%H:%M:%S')
+    time_label.config(text="Current Time: " + current_time)
+    root.after(1000, update_time)  # Update the time every second
+
+
+# Display the current time at the bottom left
+time_label = tk.Label(root, font=('Helvetica', 20), bg='white', text='')
+time_label.place(x=10, y=background_height - 30)
+
+update_icons()
+update_time()  # Start the clock
+check_flight_times()  # Start checking flight times to update icons
 
 # Keep references to the PhotoImage objects to prevent garbage collection
 image_references = [image1_photo, image2_photo]
