@@ -88,18 +88,17 @@ def delay_flight(tree):
                 print("ERROR: PLEASE INPUT A VALID GATE NUMBER")
         # Determine if any value has changed
         values_changed = False
-        new_values = list(original_values)  # Make a copy of the original values
+        new_values = list(original_values)
 
-        # Adjustments for boarding and departure times, considering the indices shift.
+        #Register each new value
         if new_boarding and new_boarding != original_values[1]:
-            new_values[1] = new_boarding  # Update boarding time
+            new_values[1] = new_boarding
             values_changed = True
         if new_departure and new_departure != original_values[2]:
-            new_values[2] = new_departure  # Update departure time
+            new_values[2] = new_departure
             values_changed = True
-
-        if new_gate and new_gate.strip() != "" and new_gate != str(original_values[5]):  # Assuming gate number is at index 5
-            new_values[6] = new_gate
+        if new_gate and new_gate.strip() != "" and new_gate != str(original_values[5]):
+            new_values[5] = new_gate
             values_changed = True
 
         # Apply the update if any value changed
@@ -118,7 +117,7 @@ def delay_flight(tree):
                     new_values[4]  # Destination
                 ])
 
-
+#Input each information from the csv file into their respective gates
 def open_info_window(gate_number):
     if gate_number not in open_windows or not open_windows[gate_number].winfo_exists():
         info_window = tk.Toplevel(root)
@@ -137,7 +136,7 @@ def open_info_window(gate_number):
         tree.heading('Destination', text='Destination')
         tree.heading('Status', text='Status')
 
-        # Correctly accessing DataFrame for primary flights
+        #Iterate over the original flight list and input their data into the gates
         gate_flights_primary = df[df["Gate Number"].astype(str) == str(gate_number)]
         for _, flight in gate_flights_primary.iterrows():
             tree.insert('', tk.END, values=(
@@ -147,28 +146,26 @@ def open_info_window(gate_number):
                 flight['Airline Name'],
                 flight['Destination'],
                 "On-Time",
-                ""  # Assuming no 'New Gate' information for primary CSV
+                ""
             ))
+
 
         temp_flight_info = "Temp flight file.csv"
         temp_flight_info_read = pd.read_csv(temp_flight_info)
-
-        # Filter for the specified gate number in the secondary CSV
-        # Make sure 'Gate Number' is treated consistently as an integer or string across both DataFrames
         gate_flights_secondary = temp_flight_info_read[temp_flight_info_read['Gate Number'] == int(gate_number)]
         for index, flight in gate_flights_secondary.iterrows():
             # Insert values into the tree, assuming 'Flight Number' and 'Airline Name' are present and need to be shown
             tree.insert('', tk.END, values=(
-                flight['Flight Number'],  # Assuming this column exists in your secondary CSV
+                flight['Flight Number'],
                 flight['Boarding Time'],
                 flight['Departure Time'],
-                flight['Airline Name'],  # Or another placeholder if the airline name isn't in the secondary CSV
+                flight['Airline Name'],
                 flight['Destination'],
-                "Delayed",  # Status for delayed flights
-                flight['Gate Number']  # Assuming 'New Gate' is a column in your secondary CSV
+                "Delayed", #if any changes were made then the status changes to delayed
+                flight['Gate Number']
             ))
 
-        # Prepare the secondary CSV (already cleared by clear_csv_file function)
+        #Iterate over the temporary flight list to see if any changes were made in any of the flights
         temp_flight_info = "Temp flight file.csv"
         temp_flight_info_read = pd.read_csv(temp_flight_info)
 
@@ -207,7 +204,7 @@ def open_info_window(gate_number):
                     flight['Destination'], "On-Time"), tags=())
 
         # Apply the tag style to the tree
-        tree.tag_configure('currentFlight', background='yellow')  # Apply the defined style to the 'currentFlight' tag
+        tree.tag_configure('currentFlight', background='yellow')
 
         # Display the treeview
         tree.pack(expand=True, fill='both')
@@ -216,15 +213,15 @@ def open_info_window(gate_number):
         delay_button = tk.Button(info_window, text="Delay", command=lambda: delay_flight(tree))
         delay_button.pack(side=tk.BOTTOM, anchor=tk.E)
 
-        # When closing the window, remove its reference
+        # GPT
         def on_close(gate_number=gate_number, window=info_window):
-            window.destroy()  # Destroy the window
-            open_windows.pop(gate_number, None)  # Remove its reference
+            window.destroy()
+            open_windows.pop(gate_number, None)
 
         info_window.protocol("WM_DELETE_WINDOW", on_close)
 
 
-# Prepare gate buttons
+# Create gates and their buttons
 gate_buttons = {}
 button_positions = [
     (30, 120), (30, 260), (30, 365), (145, 390),
@@ -235,7 +232,7 @@ button_positions = [
 for i, position in enumerate(button_positions, start=1):
     button = tk.Button(root, image=image1_photo, command=partial(open_info_window, i))
     button.place(x=position[0], y=position[1])
-    label = tk.Label(root, text=f"Gate {i}", bg='white')  # Set default background color
+    label = tk.Label(root, text=f"Gate {i}", bg='white')
     label.place(x=position[0] + 60, y=position[1] + 20)
     gate_buttons[i] = button
     gate_labels[i] = label  # Store the label
