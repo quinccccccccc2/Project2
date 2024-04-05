@@ -1,0 +1,297 @@
+Airline Name,Flight Number,Plane Model,Boarding Time,Departure Time,Gate Number,Destination
+WestJet,PD678,ATR 72,23:55:00,0:00:00,1,Montreal
+WestJet,PD883,Embraer E190,0:00:00,0:05:00,2,Montreal
+Porter Airlines,PD431,ATR 72,0:05:00,0:10:00,3,Montreal
+Air Canada,PD998,Embraer E190,0:10:00,0:15:00,4,Montreal
+Porter Airlines,PD463,ATR 72,0:15:00,0:20:00,5,Montreal
+Porter Airlines,PD134,Embraer E190,0:20:00,0:25:00,6,Washington
+WestJet,PD155,ATR 72,0:25:00,0:30:00,7,Montreal
+Porter Airlines,PD435,ATR 72,0:30:00,0:35:00,1,New York
+Porter Airlines,PD904,Embraer E190,0:35:00,0:40:00,2,New York
+Air Canada,PD217,ATR 72,0:40:00,0:45:00,3,New York
+Porter Airlines,PD955,Embraer E190,0:45:00,0:50:00,4,Boston
+Porter Airlines,PD929,ATR 72,0:50:00,0:55:00,5,Washington
+Air Canada,PD169,Embraer E190,0:55:00,1:00:00,6,Chicago
+Air Canada,PD777,ATR 72,1:00:00,1:05:00,7,Washington
+Air Canada,PD694,ATR 72,1:05:00,1:10:00,1,Chicago
+Porter Airlines,PD887,Embraer E190,1:10:00,1:15:00,2,Boston
+Air Canada,PD894,ATR 72,1:15:00,1:20:00,3,Boston
+Porter Airlines,PD791,Embraer E190,1:20:00,1:25:00,4,Washington
+Porter Airlines,PD642,ATR 72,1:25:00,1:30:00,5,Boston
+Air Canada,PD409,Embraer E190,1:30:00,1:35:00,6,Chicago
+Air Canada,PD423,ATR 72,1:35:00,1:40:00,7,Montreal
+Air Canada,PD138,ATR 72,1:40:00,1:45:00,1,New York
+WestJet,PD487,Embraer E190,1:45:00,1:50:00,2,Montreal
+Porter Airlines,PD774,ATR 72,1:50:00,1:55:00,3,Washington
+Porter Airlines,PD943,Embraer E190,1:55:00,2:00:00,4,Montreal
+Air Canada,PD761,ATR 72,2:00:00,2:05:00,5,Montreal
+Air Canada,PD868,Embraer E190,2:05:00,2:10:00,6,New York
+Air Canada,PD168,ATR 72,2:10:00,2:15:00,7,Washington
+Air Canada,PD404,ATR 72,2:15:00,2:20:00,1,Boston
+Air Canada,PD870,Embraer E190,2:20:00,2:25:00,2,New York
+Air Canada,PD895,ATR 72,2:25:00,2:30:00,3,Montreal
+Porter Airlines,PD927,Embraer E190,2:30:00,2:35:00,4,New York
+WestJet,PD579,ATR 72,2:35:00,2:40:00,5,Montreal
+WestJet,PD634,Embraer E190,2:40:00,2:45:00,6,Washington
+Porter Airlines,PD369,ATR 72,2:45:00,2:50:00,7,Chicago
+WestJet,PD128,ATR 72,2:50:00,2:55:00,1,Boston
+Air Canada,PD343,Embraer E190,2:55:00,3:00:00,2,New York
+Porter Airlines,PD643,ATR 72,3:00:00,3:05:00,3,Washington
+WestJet,PD286,Embraer E190,3:05:00,3:10:00,4,Washington
+Air Canada,PD447,ATR 72,3:10:00,3:15:00,5,Boston
+Porter Airlines,PD414,Embraer E190,3:15:00,3:20:00,6,New York
+Porter Airlines,PD816,ATR 72,3:20:00,3:25:00,7,Montreal
+Porter Airlines,PD644,ATR 72,3:25:00,3:30:00,1,New York
+Porter Airlines,PD185,Embraer E190,3:30:00,3:35:00,2,Montreal
+WestJet,PD119,ATR 72,3:35:00,3:40:00,3,Ottawa
+Air Canada,PD584,Embraer E190,3:40:00,3:45:00,4,Boston
+Air Canada,PD244,ATR 72,3:45:00,3:50:00,5,New York
+Air Canada,PD925,Embraer E190,3:50:00,3:55:00,6,Ottawa
+Porter Airlines,PD646,ATR 72,3:55:00,4:00:00,7,Chicago
+Air Canada,PD589,ATR 72,4:00:00,4:05:00,1,Chicago
+Air Canada,PD247,Embraer E190,4:05:00,4:10:00,2,Boston
+Air Canada,PD201,ATR 72,4:10:00,4:15:00,3,Montreal
+Porter Airlines,PD296,Embraer E190,4:15:00,4:20:00,4,Boston
+WestJet,PD596,ATR 72,4:20:00,4:25:00,5,New York
+Air Canada,PD501,Embraer E190,4:25:00,4:30:00,6,Washington
+WestJet,PD350,ATR 72,4:30:00,4:35:00,7,Washington
+Porter Airlines,PD143,ATR 72,4:35:00,4:40:00,1,Chicago
+WestJet,PD133,Embraer E190,4:40:00,4:45:00,2,Chicago
+Porter Airlines,PD116,ATR 72,4:45:00,4:50:00,3,Boston
+Porter Airlines,PD316,Embraer E190,4:50:00,4:55:00,4,Boston
+Air Canada,PD164,ATR 72,4:55:00,5:00:00,5,Washington
+Air Canada,PD887,Embraer E190,5:00:00,5:05:00,6,Ottawa
+WestJet,PD812,ATR 72,5:05:00,5:10:00,7,Chicago
+Porter Airlines,PD953,ATR 72,5:10:00,5:15:00,1,Ottawa
+Air Canada,PD744,Embraer E190,5:15:00,5:20:00,2,Chicago
+WestJet,PD941,ATR 72,5:20:00,5:25:00,3,Washington
+Air Canada,PD512,Embraer E190,5:25:00,5:30:00,4,Washington
+WestJet,PD438,ATR 72,5:30:00,5:35:00,5,Chicago
+WestJet,PD365,Embraer E190,5:35:00,5:40:00,6,Ottawa
+Air Canada,PD843,ATR 72,5:40:00,5:45:00,7,Chicago
+WestJet,PD226,ATR 72,5:45:00,5:50:00,1,Chicago
+WestJet,PD321,Embraer E190,5:50:00,5:55:00,2,Montreal
+WestJet,PD830,ATR 72,5:55:00,6:00:00,3,Boston
+WestJet,PD185,Embraer E190,6:00:00,6:05:00,4,Washington
+Air Canada,PD255,ATR 72,6:05:00,6:10:00,5,Washington
+WestJet,PD481,Embraer E190,6:10:00,6:15:00,6,Chicago
+WestJet,PD489,ATR 72,6:15:00,6:20:00,7,Boston
+WestJet,PD965,ATR 72,6:20:00,6:25:00,1,Montreal
+WestJet,PD754,Embraer E190,6:25:00,6:30:00,2,Montreal
+Porter Airlines,PD475,ATR 72,6:30:00,6:35:00,3,Ottawa
+Air Canada,PD140,Embraer E190,6:35:00,6:40:00,4,Chicago
+Air Canada,PD984,ATR 72,6:40:00,6:45:00,5,Washington
+Air Canada,PD270,Embraer E190,6:45:00,6:50:00,6,New York
+Air Canada,PD976,ATR 72,6:50:00,6:55:00,7,Chicago
+Air Canada,PD657,ATR 72,6:55:00,7:00:00,1,Ottawa
+Air Canada,PD763,Embraer E190,7:00:00,7:05:00,2,New York
+Air Canada,PD838,ATR 72,7:05:00,7:10:00,3,New York
+Porter Airlines,PD590,Embraer E190,7:10:00,7:15:00,4,Montreal
+Porter Airlines,PD754,ATR 72,7:15:00,7:20:00,5,Chicago
+Porter Airlines,PD932,Embraer E190,7:20:00,7:25:00,6,Boston
+WestJet,PD687,ATR 72,7:25:00,7:30:00,7,Boston
+Porter Airlines,PD972,ATR 72,7:30:00,7:35:00,1,Boston
+Porter Airlines,PD157,Embraer E190,7:35:00,7:40:00,2,Boston
+Air Canada,PD247,ATR 72,7:40:00,7:45:00,3,Ottawa
+Air Canada,PD426,Embraer E190,7:45:00,7:50:00,4,Ottawa
+Air Canada,PD976,ATR 72,7:50:00,7:55:00,5,Montreal
+Porter Airlines,PD372,Embraer E190,7:55:00,8:00:00,6,Washington
+WestJet,PD292,ATR 72,8:00:00,8:05:00,7,New York
+Porter Airlines,PD835,ATR 72,8:05:00,8:10:00,1,Montreal
+Porter Airlines,PD158,Embraer E190,8:10:00,8:15:00,2,Chicago
+WestJet,PD511,ATR 72,8:15:00,8:20:00,3,Boston
+Porter Airlines,PD277,Embraer E190,8:20:00,8:25:00,4,New York
+Air Canada,PD328,ATR 72,8:25:00,8:30:00,5,Chicago
+WestJet,PD458,Embraer E190,8:30:00,8:35:00,6,Chicago
+Air Canada,PD759,ATR 72,8:35:00,8:40:00,7,Washington
+Porter Airlines,PD586,ATR 72,8:40:00,8:45:00,1,Chicago
+WestJet,PD799,Embraer E190,8:45:00,8:50:00,2,Chicago
+Porter Airlines,PD549,ATR 72,8:50:00,8:55:00,3,Washington
+WestJet,PD984,Embraer E190,8:55:00,9:00:00,4,Montreal
+Air Canada,PD346,ATR 72,9:00:00,9:05:00,5,New York
+WestJet,PD869,Embraer E190,9:05:00,9:10:00,6,Ottawa
+WestJet,PD202,ATR 72,9:10:00,9:15:00,7,Montreal
+Air Canada,PD568,ATR 72,9:15:00,9:20:00,1,New York
+Porter Airlines,PD138,Embraer E190,9:20:00,9:25:00,2,Boston
+Air Canada,PD287,ATR 72,9:25:00,9:30:00,3,Montreal
+Air Canada,PD343,Embraer E190,9:30:00,9:35:00,4,Chicago
+Air Canada,PD979,ATR 72,9:35:00,9:40:00,5,New York
+Porter Airlines,PD110,Embraer E190,9:40:00,9:45:00,6,Washington
+WestJet,PD309,ATR 72,9:45:00,9:50:00,7,Chicago
+WestJet,PD263,ATR 72,9:50:00,9:55:00,1,Montreal
+Air Canada,PD278,Embraer E190,9:55:00,10:00:00,2,Boston
+Porter Airlines,PD626,ATR 72,10:00:00,10:05:00,3,Chicago
+WestJet,PD969,Embraer E190,10:05:00,10:10:00,4,Boston
+Air Canada,PD234,ATR 72,10:10:00,10:15:00,5,Ottawa
+Porter Airlines,PD813,Embraer E190,10:15:00,10:20:00,6,Ottawa
+WestJet,PD802,ATR 72,10:20:00,10:25:00,7,Ottawa
+Porter Airlines,PD629,ATR 72,10:25:00,10:30:00,1,New York
+WestJet,PD851,Embraer E190,10:30:00,10:35:00,2,Chicago
+Air Canada,PD856,ATR 72,10:35:00,10:40:00,3,New York
+Air Canada,PD709,Embraer E190,10:40:00,10:45:00,4,Boston
+Air Canada,PD830,ATR 72,10:45:00,10:50:00,5,Montreal
+Porter Airlines,PD265,Embraer E190,10:50:00,10:55:00,6,Boston
+WestJet,PD985,ATR 72,10:55:00,11:00:00,7,Boston
+Porter Airlines,PD121,ATR 72,11:00:00,11:05:00,1,Washington
+Air Canada,PD239,Embraer E190,11:05:00,11:10:00,2,New York
+Porter Airlines,PD579,ATR 72,11:10:00,11:15:00,3,Chicago
+Porter Airlines,PD175,Embraer E190,11:15:00,11:20:00,4,New York
+Air Canada,PD946,ATR 72,11:20:00,11:25:00,5,Washington
+Porter Airlines,PD785,Embraer E190,11:25:00,11:30:00,6,Washington
+Air Canada,PD336,ATR 72,11:30:00,11:35:00,7,Montreal
+Porter Airlines,PD265,ATR 72,11:35:00,11:40:00,1,Boston
+WestJet,PD618,Embraer E190,11:40:00,11:45:00,2,Ottawa
+Porter Airlines,PD663,ATR 72,11:45:00,11:50:00,3,New York
+Porter Airlines,PD817,Embraer E190,11:50:00,11:55:00,4,New York
+WestJet,PD226,ATR 72,11:55:00,12:00:00,5,Washington
+Porter Airlines,PD389,Embraer E190,12:00:00,12:05:00,6,Washington
+Air Canada,PD480,ATR 72,12:05:00,12:10:00,7,Boston
+Air Canada,PD708,ATR 72,12:10:00,12:15:00,1,Chicago
+Air Canada,PD440,Embraer E190,12:15:00,12:20:00,2,Washington
+WestJet,PD936,ATR 72,12:20:00,12:25:00,3,Washington
+Air Canada,PD535,Embraer E190,12:25:00,12:30:00,4,Montreal
+WestJet,PD678,ATR 72,12:30:00,12:35:00,5,Ottawa
+WestJet,PD867,Embraer E190,12:35:00,12:40:00,6,Montreal
+Air Canada,PD304,ATR 72,12:40:00,12:45:00,7,Boston
+WestJet,PD136,ATR 72,12:45:00,12:50:00,1,Montreal
+Porter Airlines,PD139,Embraer E190,12:50:00,12:55:00,2,Montreal
+Air Canada,PD591,ATR 72,12:55:00,13:00:00,3,Montreal
+WestJet,PD549,Embraer E190,13:00:00,13:05:00,4,Washington
+Porter Airlines,PD905,ATR 72,13:05:00,13:10:00,5,Chicago
+WestJet,PD431,Embraer E190,13:10:00,13:15:00,6,Chicago
+Air Canada,PD789,ATR 72,13:15:00,13:20:00,7,Washington
+Porter Airlines,PD850,ATR 72,13:20:00,13:25:00,1,Montreal
+Air Canada,PD875,Embraer E190,13:25:00,13:30:00,2,Boston
+WestJet,PD887,ATR 72,13:30:00,13:35:00,3,Ottawa
+WestJet,PD328,Embraer E190,13:35:00,13:40:00,4,Montreal
+Air Canada,PD289,ATR 72,13:40:00,13:45:00,5,Chicago
+Porter Airlines,PD561,Embraer E190,13:45:00,13:50:00,6,Chicago
+Air Canada,PD157,ATR 72,13:50:00,13:55:00,7,New York
+Air Canada,PD735,ATR 72,13:55:00,14:00:00,1,Ottawa
+WestJet,PD437,Embraer E190,14:00:00,14:05:00,2,Montreal
+WestJet,PD612,ATR 72,14:05:00,14:10:00,3,Washington
+Porter Airlines,PD879,Embraer E190,14:10:00,14:15:00,4,Ottawa
+WestJet,PD639,ATR 72,14:15:00,14:20:00,5,Washington
+WestJet,PD269,Embraer E190,14:20:00,14:25:00,6,Chicago
+WestJet,PD864,ATR 72,14:25:00,14:30:00,7,Montreal
+WestJet,PD608,ATR 72,14:30:00,14:35:00,1,Chicago
+WestJet,PD299,Embraer E190,14:35:00,14:40:00,2,Boston
+Air Canada,PD400,ATR 72,14:40:00,14:45:00,3,New York
+Air Canada,PD278,Embraer E190,14:45:00,14:50:00,4,Boston
+Porter Airlines,PD740,ATR 72,14:50:00,14:55:00,5,Washington
+WestJet,PD741,Embraer E190,14:55:00,15:00:00,6,Washington
+Porter Airlines,PD331,ATR 72,15:00:00,15:05:00,7,New York
+Porter Airlines,PD330,ATR 72,15:05:00,15:10:00,1,New York
+Air Canada,PD613,Embraer E190,15:10:00,15:15:00,2,New York
+Porter Airlines,PD860,ATR 72,15:15:00,15:20:00,3,Boston
+Air Canada,PD275,Embraer E190,15:20:00,15:25:00,4,Boston
+Air Canada,PD325,ATR 72,15:25:00,15:30:00,5,Ottawa
+Porter Airlines,PD752,Embraer E190,15:30:00,15:35:00,6,Ottawa
+Porter Airlines,PD144,ATR 72,15:35:00,15:40:00,7,Ottawa
+WestJet,PD800,ATR 72,15:40:00,15:45:00,1,Boston
+Air Canada,PD993,Embraer E190,15:45:00,15:50:00,2,Washington
+WestJet,PD849,ATR 72,15:50:00,15:55:00,3,Ottawa
+Air Canada,PD123,Embraer E190,15:55:00,16:00:00,4,Ottawa
+WestJet,PD381,ATR 72,16:00:00,16:05:00,5,New York
+Air Canada,PD602,Embraer E190,16:05:00,16:10:00,6,Montreal
+Porter Airlines,PD536,ATR 72,16:10:00,16:15:00,7,New York
+Air Canada,PD835,ATR 72,16:15:00,16:20:00,1,Washington
+Porter Airlines,PD461,Embraer E190,16:20:00,16:25:00,2,Boston
+WestJet,PD123,ATR 72,16:25:00,16:30:00,3,Washington
+Porter Airlines,PD545,Embraer E190,16:30:00,16:35:00,4,Chicago
+WestJet,PD546,ATR 72,16:35:00,16:40:00,5,Ottawa
+Porter Airlines,PD349,Embraer E190,16:40:00,16:45:00,6,Montreal
+Porter Airlines,PD806,ATR 72,16:45:00,16:50:00,7,Boston
+WestJet,PD199,ATR 72,16:50:00,16:55:00,1,Washington
+WestJet,PD710,Embraer E190,16:55:00,17:00:00,2,Washington
+Air Canada,PD482,ATR 72,17:00:00,17:05:00,3,Ottawa
+Air Canada,PD113,Embraer E190,17:05:00,17:10:00,4,Washington
+Air Canada,PD733,ATR 72,17:10:00,17:15:00,5,Montreal
+WestJet,PD157,Embraer E190,17:15:00,17:20:00,6,Ottawa
+Porter Airlines,PD624,ATR 72,17:20:00,17:25:00,7,Montreal
+Porter Airlines,PD565,ATR 72,17:25:00,17:30:00,1,Chicago
+WestJet,PD992,Embraer E190,17:30:00,17:35:00,2,Montreal
+Air Canada,PD734,ATR 72,17:35:00,17:40:00,3,New York
+Air Canada,PD203,Embraer E190,17:40:00,17:45:00,4,Boston
+Air Canada,PD571,ATR 72,17:45:00,17:50:00,5,Chicago
+WestJet,PD129,Embraer E190,17:50:00,17:55:00,6,Washington
+Porter Airlines,PD695,ATR 72,17:55:00,18:00:00,7,Ottawa
+Porter Airlines,PD612,ATR 72,18:00:00,18:05:00,1,Washington
+Porter Airlines,PD725,Embraer E190,18:05:00,18:10:00,2,Boston
+Porter Airlines,PD317,ATR 72,18:10:00,18:15:00,3,Ottawa
+WestJet,PD593,Embraer E190,18:15:00,18:20:00,4,Chicago
+WestJet,PD997,ATR 72,18:20:00,18:25:00,5,New York
+WestJet,PD257,Embraer E190,18:25:00,18:30:00,6,New York
+WestJet,PD186,ATR 72,18:30:00,18:35:00,7,Ottawa
+WestJet,PD994,ATR 72,18:35:00,18:40:00,1,Ottawa
+Air Canada,PD171,Embraer E190,18:40:00,18:45:00,2,Chicago
+Air Canada,PD562,ATR 72,18:45:00,18:50:00,3,Washington
+Air Canada,PD246,Embraer E190,18:50:00,18:55:00,4,Ottawa
+WestJet,PD677,ATR 72,18:55:00,19:00:00,5,Chicago
+WestJet,PD334,Embraer E190,19:00:00,19:05:00,6,Washington
+Porter Airlines,PD382,ATR 72,19:05:00,19:10:00,7,Ottawa
+Porter Airlines,PD864,ATR 72,19:10:00,19:15:00,1,Ottawa
+WestJet,PD544,Embraer E190,19:15:00,19:20:00,2,Boston
+Porter Airlines,PD868,ATR 72,19:20:00,19:25:00,3,New York
+WestJet,PD283,Embraer E190,19:25:00,19:30:00,4,Boston
+Air Canada,PD631,ATR 72,19:30:00,19:35:00,5,Washington
+WestJet,PD808,Embraer E190,19:35:00,19:40:00,6,Chicago
+WestJet,PD780,ATR 72,19:40:00,19:45:00,7,Boston
+Air Canada,PD503,ATR 72,19:45:00,19:50:00,1,Boston
+WestJet,PD976,Embraer E190,19:50:00,19:55:00,2,Montreal
+WestJet,PD224,ATR 72,19:55:00,20:00:00,3,Washington
+WestJet,PD237,Embraer E190,20:00:00,20:05:00,4,New York
+WestJet,PD675,ATR 72,20:05:00,20:10:00,5,Montreal
+Porter Airlines,PD651,Embraer E190,20:10:00,20:15:00,6,Washington
+Air Canada,PD628,ATR 72,20:15:00,20:20:00,7,Montreal
+Porter Airlines,PD577,ATR 72,20:20:00,20:25:00,1,Chicago
+Air Canada,PD752,Embraer E190,20:25:00,20:30:00,2,Chicago
+Porter Airlines,PD641,ATR 72,20:30:00,20:35:00,3,Chicago
+Air Canada,PD939,Embraer E190,20:35:00,20:40:00,4,Boston
+Porter Airlines,PD123,ATR 72,20:40:00,20:45:00,5,Boston
+Porter Airlines,PD835,Embraer E190,20:45:00,20:50:00,6,Montreal
+Porter Airlines,PD464,ATR 72,20:50:00,20:55:00,7,New York
+Air Canada,PD996,ATR 72,20:55:00,21:00:00,1,Montreal
+WestJet,PD859,Embraer E190,21:00:00,21:05:00,2,Chicago
+WestJet,PD847,ATR 72,21:05:00,21:10:00,3,Chicago
+Air Canada,PD588,Embraer E190,21:10:00,21:15:00,4,Montreal
+Air Canada,PD904,ATR 72,21:15:00,21:20:00,5,Montreal
+Air Canada,PD785,Embraer E190,21:20:00,21:25:00,6,Montreal
+WestJet,PD413,ATR 72,21:25:00,21:30:00,7,Montreal
+WestJet,PD891,ATR 72,21:30:00,21:35:00,1,Washington
+Porter Airlines,PD395,Embraer E190,21:35:00,21:40:00,2,Montreal
+WestJet,PD188,ATR 72,21:40:00,21:45:00,3,Chicago
+Air Canada,PD628,Embraer E190,21:45:00,21:50:00,4,Chicago
+Porter Airlines,PD615,ATR 72,21:50:00,21:55:00,5,New York
+Air Canada,PD695,Embraer E190,21:55:00,22:00:00,6,Montreal
+Porter Airlines,PD190,ATR 72,22:00:00,22:05:00,7,Chicago
+Porter Airlines,PD493,ATR 72,22:05:00,22:10:00,1,Washington
+Air Canada,PD877,Embraer E190,22:10:00,22:15:00,2,Boston
+Air Canada,PD891,ATR 72,22:15:00,22:20:00,3,Montreal
+Porter Airlines,PD544,Embraer E190,22:20:00,22:25:00,4,Washington
+Air Canada,PD695,ATR 72,22:25:00,22:30:00,5,Chicago
+WestJet,PD464,Embraer E190,22:30:00,22:35:00,6,Boston
+WestJet,PD813,ATR 72,22:35:00,22:40:00,7,Chicago
+Porter Airlines,PD632,ATR 72,22:40:00,22:45:00,1,Montreal
+WestJet,PD126,Embraer E190,22:45:00,22:50:00,2,Ottawa
+Air Canada,PD652,ATR 72,22:50:00,22:55:00,3,Montreal
+Air Canada,PD647,Embraer E190,22:55:00,23:00:00,4,Boston
+Porter Airlines,PD185,ATR 72,23:00:00,23:05:00,5,Washington
+WestJet,PD464,Embraer E190,23:05:00,23:10:00,6,Washington
+Air Canada,PD975,ATR 72,23:10:00,23:15:00,7,Montreal
+Air Canada,PD267,ATR 72,23:15:00,23:20:00,1,Boston
+WestJet,PD329,Embraer E190,23:20:00,23:25:00,2,Montreal
+Air Canada,PD253,ATR 72,23:25:00,23:30:00,3,Boston
+Air Canada,PD392,Embraer E190,23:30:00,23:35:00,4,Ottawa
+WestJet,PD506,ATR 72,23:35:00,23:40:00,5,Washington
+WestJet,PD195,Embraer E190,23:40:00,23:45:00,6,Washington
+Porter Airlines,PD665,ATR 72,23:45:00,23:50:00,7,Boston
+Porter Airlines,PD664,ATR 72,23:50:00,23:55:00,1,Ottawa
+Porter Airlines,PD664,ATR 72,14:51:00,14:52:00,1,Ottawa
+Porter Airlines,PD664,ATR 72,14:51:00,14:55:00,2,Ottawa
+Porter Airlines,PD664,ATR 72,14:42:00,14:45:00,3,Ottawa
+Porter Airlines,PD664,ATR 72,14:31:00,14:35:00,4,Ottawa
+Porter Airlines,PD664,ATR 72,14:32:00,14:35:00,5,Ottawa
+Porter Airlines,PD664,ATR 72,14:28:00,14:35:00,6,Ottawa
+Porter Airlines,PD664,ATR 72,14:39:00,14:40:00,7,Ottawa
+Porter Airlines,PD664,ATR 72,14:40:00,14:45:00,8,Ottawa
