@@ -1,6 +1,6 @@
 import tkinter as tk
 import time
-from tkinter import ttk
+from tkinter import ttk, simpledialog
 from PIL import Image, ImageTk
 from functools import partial
 import pandas as pd
@@ -43,6 +43,34 @@ def is_flight_time_now(boarding_time_str, departure_time_str):
     departure_time = datetime.strptime(departure_time_str, '%H:%M:%S').time()
     return boarding_time <= current_time <= departure_time
 
+def delay_flight(tree):
+    selected_item = tree.selection()[0] if tree.selection() else None
+    if selected_item:
+        item = tree.item(selected_item)
+        original_values = item['values']
+
+        # Request new values
+        new_boarding = simpledialog.askstring("Update Boarding Time", "Enter new boarding time (HH:MM):", parent=tree)
+        new_departure = simpledialog.askstring("Update Departure Time", "Enter new departure time (HH:MM):", parent=tree)
+        new_gate = simpledialog.askstring("Update Gate Number", "Enter new gate (if unchanged, press Cancel):", parent=tree)
+
+        # Determine if any value has changed
+        values_changed = False
+        new_values = list(original_values)  # Copy to a new list for potential modification
+
+        if new_boarding and new_boarding != original_values[0]:
+            new_values[0] = new_boarding
+            values_changed = True
+        if new_departure and new_departure != original_values[1]:
+            new_values[1] = new_departure
+            values_changed = True
+        if new_gate and new_gate != str(original_values[-1]):  # Assuming gate number is the last value
+            new_values[-1] = new_gate
+            values_changed = True
+
+        # If any value changed, update the item with new values and apply the 'modified' tag
+        if values_changed:
+            tree.item(selected_item, values=new_values, tags='modified')
 
 def open_info_window(gate_number):
     # Ensure the button does not change the icon upon being pressed
@@ -51,20 +79,27 @@ def open_info_window(gate_number):
         info_window.title(f"Flight Information for Gate {gate_number}")
         open_windows[gate_number] = info_window
 
-        tree = ttk.Treeview(info_window, columns=('Boarding Time', 'Departure Time', 'Airline', 'Destination'),
+        tree = ttk.Treeview(info_window,
+                            columns=('Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status', 'New Gate'),
                             show='headings')
         tree.heading('Boarding Time', text='Boarding Time')
         tree.heading('Departure Time', text='Departure Time')
         tree.heading('Airline', text='Airline')
         tree.heading('Destination', text='Destination')
+        tree.heading('Status', text='Status')
+        tree.heading('New Gate', text='New Gate')
 
-        # Filter flights for this gate
+        # Filter flights for this gate and assume all flights are initially "On-Time"
         gate_flights = df[df['Gate Number'] == gate_number]
         for index, flight in gate_flights.iterrows():
-            tree.insert('', tk.END, values=(
-            flight['Boarding Time'], flight['Departure Time'], flight['Airline Name'], flight['Destination']))
+            tree.insert('', tk.END, values=(flight['Boarding Time'], flight['Departure Time'], flight['Airline Name'], flight['Destination'], "On-Time", ""))
+
 
         tree.pack(expand=True, fill='both')
+
+        # Delay button
+        delay_button = tk.Button(info_window, text="Delay", command=lambda: delay_flight(tree))
+        delay_button.pack(side=tk.BOTTOM, anchor=tk.E)
 
         # Remove the window from the dictionary when it is closed
         def on_close(gate_number=gate_number, window=info_window):
