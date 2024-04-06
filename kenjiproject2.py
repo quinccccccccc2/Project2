@@ -1,11 +1,12 @@
-import tkinter as tk
-import time
-from tkinter import ttk, simpledialog
-from PIL import Image, ImageTk
-from functools import partial
-import pandas as pd
-from datetime import datetime
 import csv
+import time
+import tkinter as tk
+from datetime import datetime
+from functools import partial
+from tkinter import ttk, simpledialog
+
+import pandas as pd
+from PIL import Image, ImageTk
 
 # Load the flight information from the CSV file
 flight_info = pd.read_csv("Updated_Flight_Schedule3.csv")  # Adjust the path to your CSV file
