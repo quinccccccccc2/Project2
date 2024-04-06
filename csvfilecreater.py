@@ -2,6 +2,9 @@ import pandas as pd
 from datetime import datetime, timedelta
 import numpy as np
 
+#THIS PROGRAM IS ENTIRLY CHATGPT AND SHOULD NOT BE CONSIDERED APART OF ASSIGNMENT, THIS IS ONLY TO CREATE AN EXAMPLE FOR
+#DEVELOPERS AND TESTERS TO ANALYSE THE PROGRAM.
+
 # Define the start and end times for the flight schedule
 start_time = datetime.strptime("00:00", "%H:%M")
 end_time = datetime.strptime("23:59", "%H:%M")
