@@ -25,7 +25,7 @@ import re
 
 # Notes
 # When putting a new delay time, please utilize military time format.
-# We acknowledge that this is an unfinished product and would have implemented more features if more time was utilised.
+# We acknowledge that this is an unfinished product and would have implemented more features if more time was utilized.
 
 # Initialize Tkinter window
 root = tk.Tk()
@@ -43,7 +43,7 @@ df = pd.read_csv(csv_file_path)
 
 
 #Utilized CHATGPT to clear the CSV file to allow repeated use.
-# To prevent loadingfile_path: information from previous compiling, clear the temporary file so the logs will start fresh
+# To prevent loading file_path: information from previous compiling, clear the temporary file so the logs will start fresh
 def clear_csv_file(file_path):
     print(f"Clearing file: {file_path}")
     try:
@@ -54,8 +54,6 @@ def clear_csv_file(file_path):
         print("File cleared successfully.")
     except Exception as e:
         print(f"Failed to clear file: {e}")
-
-
 clear_csv_file("Temp flight file.csv")
 
 # Load the background image and set as the window background
@@ -183,7 +181,7 @@ def open_info_window(gate_number):
         frame = tk.Frame(info_window)
         frame.pack(expand=True, fill='both')
 
-        # Create the treeview (Lab exercise it as a format)
+        # Create the treeview (Lab exercise was used as a format)
         tree = ttk.Treeview(frame, columns=(
             'Flight Number', 'Boarding Time', 'Departure Time', 'Airline', 'Destination', 'Status', 'New Gate'),
                             show='headings')
